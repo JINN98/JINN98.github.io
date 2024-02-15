@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>카카오뱅크 계좌번호 복사</title>
+    <title>홈페이지</title>
     <style>
         body {
             background-image: url('background.jpg'); /* 배경 이미지 파일 경로로 변경 */
@@ -48,8 +48,8 @@
     </script>
 </head>
 <body>
-    <h1>계좌번호 복사하기</h1>
-    <p>아래 버튼을 클릭하여 계좌번호를 복사하세요:</p>
-    <button onclick="copyToClipboard('3333046765322')">계좌번호 복사</button>
+    <h1 id="pageTitle">엠젯 코인노래연습장</h1>
+    <p id="pageContent">카카오뱅크 박태현 </p>
+    <button onclick="copyToClipboard(document.getElementById('pageContent').textContent)">내용 복사</button>
 </body>
 </html>
