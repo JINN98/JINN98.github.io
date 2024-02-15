@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>홈페이지</title>
+    <title>계좌번호 복사하기</title>
     <style>
         body {
-            background-image: url('background.jpg'); /* 배경 이미지 파일 경로로 변경 */
-            background-size: cover;
-            background-position: center;
-            color: white; /* 텍스트 색상을 흰색으로 변경 */
+            background-color: #f0f0f0;
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
         }
         h1 {
-            font-size: 36px;
+            color: #333;
         }
         p {
             font-size: 18px;
             margin-bottom: 20px;
         }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 80%;
+            margin-bottom: 20px;
+        }
         button {
-            background-color: #4CAF50; /* 버튼 배경색을 녹색으로 변경 */
+            background-color: #4CAF50;
             color: white;
             padding: 15px 20px;
             font-size: 18px;
@@ -32,24 +37,41 @@
             transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #45a049; /* 호버 시 버튼 배경색 변경 */
+            background-color: #45a049;
+        }
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 80%;
+            margin-bottom: 20px;
         }
     </style>
     <script>
-        function copyToClipboard(text) {
-            var textarea = document.createElement("textarea");
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textarea);
-            alert("계좌번호가 복사되었습니다: " + text);
+        function copyToClipboard() {
+            var accountNumber = '3333';
+            navigator.clipboard.writeText(accountNumber)
+            .then(() => {
+                alert("계좌번호가 복사되었습니다: " + accountNumber);
+            })
+            .catch(err => {
+                console.error('복사 실패:', err);
+                alert("계좌번호 복사에 실패하였습니다.");
+            });
         }
     </script>
 </head>
 <body>
-    <h1 id="pageTitle">엠젯 코인노래연습장</h1>
-    <p id="pageContent">카카오뱅크 박태현 </p>
-    <button onclick="copyToClipboard(document.getElementById('pageContent').textContent)">내용 복사</button>
+    <h1>계좌번호 복사하기</h1>
+    <p>가격대를 선택하세요:</p>
+    <select id="priceSelect">
+        <option value="1000">2곡 - 1000원</option>
+        <option value="5000">12곡 - 5000원</option>
+        <option value="10000">25곡 - 10000원</option>
+        <option value="4000">30분 - 4000원</option>
+        <option value="7000">60분 - 7000원</option>
+    </select>
+    <button onclick="copyToClipboard()">계좌번호 복사</button>
 </body>
 </html>
